@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GoOnline — A.N.M. Tanvir Ahammed | Web Design Dhaka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+:root{
+  --navy:#0f172a;--navy2:#1e293b;--navy3:#334155;
+  --blue:#3b82f6;--blue2:#60a5fa;--white:#ffffff;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#111;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--navy2);}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:99px;}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 40px;background:var(--navy);
+  position:sticky;top:0;z-index:999;
+  border-bottom:0.5px solid rgba(255,255,255,0.07);
+  backdrop-filter:blur(10px);
+}
+.logo{font-size:20px;font-weight:600;color:#fff;}
+.logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:14px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s;cursor:pointer;}
+.nav-links a:hover{color:#fff;}
+.nav-btn{background:var(--blue);color:#fff;border:none;padding:9px 22px;border-radius:99px;font-size:13px;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;}
+.nav-btn:hover{background:#2563eb;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;display:block;transition:all 0.3s;}
+.mobile-menu{display:none;flex-direction:column;gap:0;background:var(--navy2);border-top:0.5px solid rgba(255,255,255,0.07);}
+.mobile-menu a{padding:14px 40px;font-size:14px;color:rgba(255,255,255,0.65);text-decoration:none;border-bottom:0.5px solid rgba(255,255,255,0.05);cursor:pointer;}
+.mobile-menu a:hover{color:#fff;background:rgba(255,255,255,0.04);}
+.mobile-menu .m-btn{margin:16px 40px 20px;padding:12px;text-align:center;background:var(--blue);color:#fff;border-radius:99px;font-size:14px;border-bottom:none;}
+
+/* HERO */
+.hero{background:var(--navy);padding:90px 40px 100px;position:relative;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:0.35;pointer-events:none;animation:orbFloat ease-in-out infinite;}
+.o1{width:380px;height:380px;background:#3b82f6;top:-120px;right:-80px;animation-duration:9s;}
+.o2{width:260px;height:260px;background:#1d4ed8;bottom:-80px;left:-60px;animation-duration:11s;animation-delay:-4s;}
+.o3{width:180px;height:180px;background:#60a5fa;top:45%;left:38%;animation-duration:7s;animation-delay:-2s;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.07);}}
+.pts{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.pt{position:absolute;border-radius:50%;background:rgba(255,255,255,0.75);animation:riseUp linear infinite;}
+@keyframes riseUp{0%{transform:translateY(0);opacity:0;}10%{opacity:1;}90%{opacity:0.3;}100%{transform:translateY(-500px);opacity:0;}}
+.hero-in{position:relative;z-index:2;max-width:600px;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,0.15);border:0.5px solid rgba(59,130,246,0.4);color:#93c5fd;font-size:12px;padding:5px 16px;border-radius:99px;margin-bottom:24px;}
+.ldot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-size:52px;font-weight:600;line-height:1.1;color:#fff;margin-bottom:20px;animation:fadeUp 0.8s ease both;}
+.hero h1 span{background:linear-gradient(90deg,#60a5fa,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:17px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:500px;margin-bottom:36px;animation:fadeUp 0.8s ease 0.1s both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 0.8s ease 0.2s both;}
+.btn-main{background:var(--blue);color:#fff;border:none;padding:14px 32px;border-radius:99px;font-size:15px;cursor:pointer;font-family:inherit;font-weight:500;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;}
+.btn-main:hover{background:#2563eb;transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,0.35);}
+.btn-ghost{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);border:0.5px solid rgba(255,255,255,0.2);padding:14px 32px;border-radius:99px;font-size:15px;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;}
+.btn-ghost:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px);}
+
+/* STATS */
+.stats{display:flex;background:var(--navy2);border-top:0.5px solid rgba(255,255,255,0.07);}
+.si{flex:1;padding:30px 10px;text-align:center;border-right:0.5px solid rgba(255,255,255,0.07);}
+.si:last-child{border-right:none;}
+.sn{font-size:30px;font-weight:600;color:var(--blue2);}
+.sl{font-size:12px;color:rgba(255,255,255,0.4);margin-top:5px;}
+
+/* ABOUT */
+.about{padding:80px 40px;background:#f8fafc;display:flex;gap:48px;align-items:center;}
+.about-img{flex-shrink:0;width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;font-size:42px;color:#fff;font-weight:600;border:3px solid var(--blue2);animation:orbFloat ease-in-out 6s infinite;}
+.stag{font-size:11px;color:var(--blue);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.about h2{font-size:28px;font-weight:600;color:var(--navy);margin-bottom:14px;}
+.about p{font-size:15px;color:#64748b;line-height:1.8;}
+.skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.skill{background:#e0f2fe;color:#0369a1;font-size:12px;padding:5px 14px;border-radius:99px;border:0.5px solid #bae6fd;font-weight:500;}
+
+/* SERVICES */
+.services{padding:80px 40px;background:#fff;}
+.sec-top{margin-bottom:36px;}
+.sec-title{font-size:28px;font-weight:600;color:var(--navy);margin-top:8px;}
+.sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.sc{background:#fff;border:0.5px solid #e2e8f0;border-radius:16px;padding:26px;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;animation:floatCard ease-in-out infinite;}
+.sc:nth-child(1){animation-duration:5s;}
+.sc:nth-child(2){animation-duration:6s;animation-delay:-2s;}
+.sc:nth-child(3){animation-duration:4.5s;animation-delay:-1s;}
+.sc:nth-child(4){animation-duration:5.5s;animation-delay:-3s;}
+@keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.sc:hover{border-color:var(--blue);box-shadow:0 8px 30px rgba(59,130,246,0.1);}
+.sc-icon{font-size:28px;margin-bottom:14px;}
+.sc h3{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.sc p{font-size:14px;color:#64748b;line-height:1.7;}
+.sp{font-size:13px;color:var(--blue);font-weight:600;margin-top:12px;}
+
+/* PROCESS */
+.process{padding:80px 40px;background:var(--navy);position:relative;overflow:hidden;}
+.po1{position:absolute;width:300px;height:300px;background:#3b82f6;border-radius:50%;filter:blur(80px);opacity:0.2;top:-80px;right:-60px;animation:orbFloat 10s ease-in-out infinite;}
+.po2{position:absolute;width:220px;height:220px;background:#1d4ed8;border-radius:50%;filter:blur(80px);opacity:0.2;bottom:-40px;left:-40px;animation:orbFloat 8s ease-in-out infinite;animation-delay:-3s;}
+.process .stag{color:#60a5fa;}
+.process .sec-title{color:#fff;margin-bottom:40px;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:2;}
+.step{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:26px;text-align:center;transition:border-color 0.2s,transform 0.2s;animation:floatCard ease-in-out infinite;}
+.step:nth-child(1){animation-duration:5s;}
+.step:nth-child(2){animation-duration:6s;animation-delay:-2s;}
+.step:nth-child(3){animation-duration:4.5s;animation-delay:-1s;}
+.step:nth-child(4){animation-duration:5.5s;animation-delay:-3s;}
+.step:hover{border-color:var(--blue2);}
+.step-num{font-size:32px;font-weight:700;color:var(--blue2);margin-bottom:12px;}
+.step h3{font-size:15px;font-weight:600;color:#fff;margin-bottom:8px;}
+.step p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;}
+
+/* PRICING */
+.pricing{padding:80px 40px;background:#f8fafc;}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+.pc{background:#fff;border:0.5px solid #e2e8f0;border-radius:16px;padding:28px;transition:transform 0.2s,box-shadow 0.2s;animation:floatCard ease-in-out infinite;}
+.pc:nth-child(1){animation-duration:5s;}
+.pc:nth-child(2){animation-duration:6s;animation-delay:-2s;border:2px solid var(--blue);}
+.pc:nth-child(3){animation-duration:4.5s;animation-delay:-1s;}
+.pc:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,0.08);}
+.pop-badge{background:#dbeafe;color:#1d4ed8;font-size:11px;padding:4px 12px;border-radius:99px;display:inline-block;margin-bottom:14px;font-weight:600;}
+.pc-name{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.pc-price{font-size:32px;font-weight:700;color:var(--blue);margin-bottom:4px;}
+.pc-per{font-size:12px;color:#94a3b8;margin-bottom:4px;}
+.pc-features{margin-top:18px;display:flex;flex-direction:column;gap:10px;}
+.pf{font-size:14px;color:#64748b;display:flex;align-items:center;gap:8px;}
+.pf::before{content:'✓';color:#22c55e;font-weight:700;font-size:13px;flex-shrink:0;}
+.pc-btn{width:100%;margin-top:20px;background:var(--blue);color:#fff;border:none;padding:12px;border-radius:99px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;transition:background 0.2s,transform 0.2s;}
+.pc-btn:hover{background:#2563eb;transform:translateY(-1px);}
+.pc:nth-child(1) .pc-btn,.pc:nth-child(3) .pc-btn{background:var(--navy);color:#fff;}
+.pc:nth-child(1) .pc-btn:hover,.pc:nth-child(3) .pc-btn:hover{background:var(--navy2);}
+
+/* TESTIMONIALS */
+.testi{padding:80px 40px;background:var(--navy);position:relative;overflow:hidden;}
+.to1{position:absolute;width:280px;height:280px;background:#3b82f6;border-radius:50%;filter:blur(80px);opacity:0.15;top:-60px;left:-60px;animation:orbFloat 10s ease-in-out infinite;}
+.testi .stag{color:#60a5fa;}
+.testi .sec-title{color:#fff;margin-bottom:36px;}
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;position:relative;z-index:2;}
+.tc{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:26px;animation:floatCard ease-in-out infinite;}
+.tc:nth-child(1){animation-duration:5s;}
+.tc:nth-child(2){animation-duration:6.5s;animation-delay:-2s;}
+.tc-text{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:18px;font-style:italic;}
+.tc-author{display:flex;align-items:center;gap:12px;}
+.tc-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#1d4ed8);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#fff;flex-shrink:0;}
+.tc-name{font-size:14px;font-weight:600;color:#fff;}
+.tc-biz{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;}
+
+/* CTA */
+.cta{padding:80px 40px;background:#fff;text-align:center;}
+.cta h2{font-size:36px;font-weight:600;color:var(--navy);margin-bottom:14px;}
+.cta p{font-size:16px;color:#64748b;margin-bottom:32px;}
+.cta .btn-row{justify-content:center;}
+.btn-navy{background:var(--navy);color:#fff;border:none;padding:14px 32px;border-radius:99px;font-size:15px;cursor:pointer;font-family:inherit;font-weight:500;transition:background 0.2s,transform 0.2s;}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{background:var(--navy2);}
+.ftabs{display:flex;border-bottom:0.5px solid rgba(255,255,255,0.08);}
+.ftab{flex:1;padding:16px 8px;text-align:center;font-size:13px;color:rgba(255,255,255,0.4);cursor:pointer;position:relative;transition:color 0.2s;border-right:0.5px solid rgba(255,255,255,0.07);}
+.ftab:last-child{border-right:none;}
+.ftab.on{color:#fff;}
+.ftab.on::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue);animation:slideIn 0.3s ease;}
+@keyframes slideIn{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+.ftab-icon{font-size:18px;margin-bottom:4px;}
+.fcon{display:none;padding:24px 40px;}
+.fcon.on{display:block;animation:fadeUp 0.4s ease;}
+.fcon p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.8;}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.chip{display:inline-flex;align-items:center;gap:7px;background:rgba(59,130,246,0.12);border:0.5px solid rgba(59,130,246,0.3);color:#93c5fd;font-size:13px;padding:8px 16px;border-radius:99px;cursor:pointer;transition:background 0.2s;}
+.chip:hover{background:rgba(59,130,246,0.2);}
+.fbot{padding:16px 40px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid rgba(255,255,255,0.06);}
+.fbot p{font-size:12px;color:rgba(255,255,255,0.25);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .mobile-menu.open{display:flex;}
+  .hero{padding:60px 20px 70px;}
+  .hero h1{font-size:34px;}
+  .about{flex-direction:column;padding:60px 20px;gap:24px;}
+  .sgrid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .pgrid{grid-template-columns:1fr;}
+  .tgrid{grid-template-columns:1fr;}
+  .services,.process,.pricing,.testi,.cta{padding:60px 20px;}
+  .stats{flex-wrap:wrap;}
+  .si{min-width:50%;border-bottom:0.5px solid rgba(255,255,255,0.07);}
+  .fbot{flex-direction:column;gap:8px;text-align:center;}
+  .fcon{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Go<span>Online</span></div>
+  <div class="nav-links">
+    <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+    <a onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a>
+    <a onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+    <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+    <a href="https://mail.google.com/mail/?view=cm&to=tanvir56.business@gmail.com" target="_blank">✉️ tanvir56.business@gmail.com</a>
+    <button class="nav-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's talk</button>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="toggleMenu();setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),10)">About</a>
+  <a onclick="toggleMenu();setTimeout(()=>document.getElementById('services').scrollIntoView({behavior:'smooth'}),10)">Services</a>
+  <a onclick="toggleMenu();setTimeout(()=>document.getElementById('pricing').scrollIntoView({behavior:'smooth'}),10)">Pricing</a>
+  <a onclick="toggleMenu();setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),10)">Contact</a>
+  <a class="m-btn" onclick="toggleMenu();setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),10)">Let's talk</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+  <div class="pts" id="pts"></div>
+  <div class="hero-in">
+    <div class="badge"><div class="ldot"></div>Available for new clients</div>
+    <h1>Take your business<br><span>online today</span></h1>
+    <p>Hi, I'm Tanvir — I help small businesses in Dhaka get professional websites, rank on Google, and grow their customers. Fast, affordable, zero stress.</p>
+    <div class="btn-row">
+      <button class="btn-main" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get started →</button>
+      <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See my work</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="si"><div class="sn">20+</div><div class="sl">Clients served</div></div>
+  <div class="si"><div class="sn">48h</div><div class="sl">Avg. delivery</div></div>
+  <div class="si"><div class="sn">100%</div><div class="sl">Satisfaction</div></div>
+  <div class="si"><div class="sn">৳0</div><div class="sl">Consultation</div></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img">T</div>
+  <div>
+    <div class="stag">About me</div>
+    <h2>A.N.M. Tanvir Ahammed</h2>
+    <p>I'm a web designer based in Dhaka helping small businesses build their online presence. I combine modern design with smart strategy to get you real results — more customers, more visibility, more growth.</p>
+    <div class="skills">
+      <span class="skill">Web Design</span>
+      <span class="skill">SEO</span>
+      <span class="skill">Social Media</span>
+      <span class="skill">Maintenance</span>
+      <span class="skill">Dhaka Based</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-top">
+    <div class="stag">What I offer</div>
+    <div class="sec-title">Services for local businesses</div>
+  </div>
+  <div class="sgrid">
+    <div class="sc">
+      <div class="sc-icon">🌐</div>
+      <h3>Website design</h3>
+      <p>Mobile-friendly, professional websites that look great and bring in real customers 24/7.</p>
+      <div class="sp">From ৳8,000</div>
+    </div>
+    <div class="sc">
+      <div class="sc-icon">🔍</div>
+      <h3>SEO</h3>
+      <p>Get found on Google when people search for your services in Dhaka and beyond.</p>
+      <div class="sp">From ৳3,000/mo</div>
+    </div>
+    <div class="sc">
+      <div class="sc-icon">📱</div>
+      <h3>Social media pages</h3>
+      <p>Professional Facebook and Instagram setup with branded graphics and content strategy.</p>
+      <div class="sp">From ৳2,500</div>
+    </div>
+    <div class="sc">
+      <div class="sc-icon">🔧</div>
+      <h3>Monthly maintenance</h3>
+      <p>Keep your site fast, secure and updated — you focus on business, I handle the tech.</p>
+      <div class="sp">From ৳1,500/mo</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="po1"></div><div class="po2"></div>
+  <div class="stag">How it works</div>
+  <div class="sec-title">Simple 4 step process</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h3>Contact me</h3><p>WhatsApp or message me. Free consultation, no pressure.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>We plan</h3><p>I learn about your business and build a clear plan together.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>I build</h3><p>Your site is designed and built in 48 hours, ready for review.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Go live</h3><p>Your business is online and ready to attract customers.</p></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="stag">Pricing</div>
+  <div class="sec-title">Affordable for every business</div>
+  <div class="pgrid">
+    <div class="pc">
+      <div class="pc-name">Starter</div>
+      <div class="pc-price">৳8,000</div>
+      <div class="pc-per">one time payment</div>
+      <div class="pc-features">
+        <div class="pf">1 page website</div>
+        <div class="pf">Mobile friendly</div>
+        <div class="pf">Contact form</div>
+        <div class="pf">48h delivery</div>
+        <div class="pf">1 revision round</div>
+      </div>
+      <button class="pc-btn">Get started</button>
+    </div>
+    <div class="pc">
+      <div class="pop-badge">⭐ Most popular</div>
+      <div class="pc-name">Business</div>
+      <div class="pc-price">৳15,000</div>
+      <div class="pc-per">one time payment</div>
+      <div class="pc-features">
+        <div class="pf">5 page website</div>
+        <div class="pf">SEO setup</div>
+        <div class="pf">Social media pages</div>
+        <div class="pf">Google Maps listing</div>
+        <div class="pf">1 month free support</div>
+      </div>
+      <button class="pc-btn">Get started</button>
+    </div>
+    <div class="pc">
+      <div class="pc-name">Premium</div>
+      <div class="pc-price">৳25,000</div>
+      <div class="pc-per">one time payment</div>
+      <div class="pc-features">
+        <div class="pf">10 page website</div>
+        <div class="pf">Full SEO package</div>
+        <div class="pf">3 months maintenance</div>
+        <div class="pf">Logo design</div>
+        <div class="pf">Priority support</div>
+      </div>
+      <button class="pc-btn">Get started</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="to1"></div>
+  <div class="stag">Testimonials</div>
+  <div class="sec-title">What clients say</div>
+  <div class="tgrid">
+    <div class="tc">
+      <div class="tc-text">"Tanvir built our restaurant website in just 2 days. Customers now find us on Google easily and our orders have increased a lot. Very professional and affordable!"</div>
+      <div class="tc-author">
+        <div class="tc-av">R</div>
+        <div><div class="tc-name">Rahim Uddin</div><div class="tc-biz">Al-Amin Restaurant, Dhaka</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-text">"Before GoOnline our salon had zero online presence. Now we have a beautiful website and Facebook page. Bookings have doubled. Highly recommended!"</div>
+      <div class="tc-author">
+        <div class="tc-av">S</div>
+        <div><div class="tc-name">Sultana Begum</div><div class="tc-biz">Star Beauty Salon, Dhaka</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Ready to go online?</h2>
+  <p>First consultation is completely free. Let's build something great together.</p>
+  <div class="btn-row">
+    <button class="btn-main" onclick="window.open('https://wa.me/8801405527145?text=Hi Tanvir, I want to get my business online!','_blank')">💬 WhatsApp me now</button>
+    <button class="btn-navy" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See pricing</button>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section style="background:#0d0d0d;padding:60px 20px;text-align:center;" id="payment">
+  <h2 style="color:#fff;font-size:22px;margin-bottom:8px;">💳 Payment Methods</h2>
+  <p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:32px;">Send payment easily using your preferred method</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:600px;margin:0 auto;">
+
+    <!-- bKash -->
+    <div style="background:#1a0a12;border:1px solid #e2136e;border-radius:16px;padding:24px 32px;min-width:220px;flex:1;">
+      <div style="font-size:36px;margin-bottom:8px;">📱</div>
+      <div style="color:#e2136e;font-weight:700;font-size:18px;margin-bottom:4px;">bKash</div>
+      <div style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:12px;">Personal / Send Money</div>
+      <div style="color:#fff;font-size:20px;font-weight:700;letter-spacing:1px;margin-bottom:16px;">01405527145</div>
+      <button onclick="navigator.clipboard.writeText('01405527145');this.innerText='✅ Copied!';setTimeout(()=>this.innerText='📋 Copy Number',2000)" style="background:#e2136e;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:13px;cursor:pointer;width:100%;">📋 Copy Number</button>
+    </div>
+
+    <!-- More coming soon -->
+    <div style="background:#111;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px 32px;min-width:220px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div style="font-size:32px;margin-bottom:8px;">🔜</div>
+      <div style="color:rgba(255,255,255,0.3);font-size:14px;">Nagad, Rocket &</div>
+      <div style="color:rgba(255,255,255,0.3);font-size:14px;">Bank Transfer</div>
+      <div style="color:rgba(255,255,255,0.2);font-size:12px;margin-top:8px;">Coming soon</div>
+    </div>
+
+  </div>
+  <p style="color:rgba(255,255,255,0.3);font-size:12px;margin-top:24px;">After payment, send a screenshot to WhatsApp for confirmation</p>
+  <button onclick="window.open('https://wa.me/8801405527145?text=Hi Tanvir, I just made a payment!','_blank')" style="margin-top:12px;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);padding:10px 24px;border-radius:8px;font-size:13px;cursor:pointer;">💬 Send payment screenshot</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftabs">
+    <div class="ftab on" onclick="ft('about',this)"><div class="ftab-icon">👤</div>About</div>
+    <div class="ftab" onclick="ft('contact',this)"><div class="ftab-icon">✉️</div>Contact</div>
+    <div class="ftab" onclick="ft('location',this)"><div class="ftab-icon">📍</div>Location</div>
+  </div>
+  <div class="fcon on" id="fc-about">
+    <p>I'm A.N.M. Tanvir Ahammed, a web designer helping small businesses in Dhaka build their online presence. Affordable prices, professional results, zero headaches.</p>
+  </div>
+  <div class="fcon" id="fc-contact">
+    <p>Reach out anytime — I reply fast!</p>
+    <div class="chips">
+      <div class="chip" onclick="window.open('https://wa.me/8801405527145','_blank')">💬 WhatsApp</div>
+      <div class="chip" onclick="window.open('https://mail.google.com/mail/?view=cm&to=tanvir56.business@gmail.com','_blank')">✉️ Email</div>
+      <div class="chip" onclick="window.open('https://www.facebook.com/share/18cSaNFVPZ/','_blank')">📘 Facebook</div>
+    </div>
+  </div>
+  <div class="fcon" id="fc-location">
+    <p>Based in Dhaka, Bangladesh. Serving clients across the country and remotely worldwide.</p>
+    <div class="chips">
+      <div class="chip">📍 Dhaka, Bangladesh</div>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 GoOnline · A.N.M. Tanvir Ahammed</p>
+    <p>Made with ❤️ in Dhaka</p>
+  </div>
+</footer>
+
+<script>
+// Particles
+const pts=document.getElementById('pts');
+for(let i=0;i<30;i++){
+  const d=document.createElement('div');
+  d.className='pt';
+  d.style.cssText=`left:${Math.random()*100}%;bottom:-8px;width:${2+Math.random()*3}px;height:${2+Math.random()*3}px;animation-duration:${6+Math.random()*10}s;animation-delay:${-Math.random()*14}s;opacity:${0.3+Math.random()*0.5}`;
+  pts.appendChild(d);
+}
+
+// Footer tabs
+function ft(n,el){
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.fcon').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('fc-'+n).classList.add('on');
+}
+
+// Mobile menu
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.animation='fadeUp 0.7s ease both';
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.sc,.step,.pc,.tc,.about-img').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
